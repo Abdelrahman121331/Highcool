@@ -1,0 +1,137 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "hash",
+ "creation": "2026-04-16 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "module": "Highcool Component Management",
+ "name": "Supplier Missing Component",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Purchase Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Stock Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Purchase User",
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Stock User",
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "field_order": [
+  "supplier",
+  "component_item",
+  "missing_qty",
+  "purchase_receipt",
+  "batch_no",
+  "date",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Supplier",
+   "options": "Supplier",
+   "reqd": 1
+  },
+  {
+   "fieldname": "component_item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Component Item",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "missing_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Missing Qty",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "purchase_receipt",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Purchase Receipt",
+   "options": "Purchase Receipt",
+   "reqd": 1
+  },
+  {
+   "fieldname": "batch_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Batch No"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Open\nResolved",
+   "reqd": 1
+  }
+ ]
+}

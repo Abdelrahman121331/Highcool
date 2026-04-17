@@ -1,0 +1,47 @@
+{
+ "actions": [],
+ "creation": "2026-04-13 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "istable": 1,
+ "modified": "2026-04-13 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Highcool Component Management",
+ "name": "Item Component Row",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "field_order": [
+  "item_code",
+  "qty_per_unit",
+  "mandatory"
+ ],
+ "fields": [
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Component Item",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "qty_per_unit",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty per Unit",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "mandatory",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Mandatory"
+  }
+ ]
+}

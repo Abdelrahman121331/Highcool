@@ -1,0 +1,2 @@
+highcool_components.highcool_component_management.patches.cleanup_legacy_component_tracking
+highcool_components.highcool_component_management.patches.convert_pr_component_receipts_to_json
