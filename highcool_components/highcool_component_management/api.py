@@ -44,3 +44,19 @@ def get_supplier_missing_component_dashboard(supplier: str):
 	)
 
 	return {"details": details, "summary": summary}
+
+
+@frappe.whitelist()
+def get_grouped_unresolved_missing_components(supplier: str | None = None):
+	"""Load open / partially resolved missing quantities grouped by component item (for Resolution screen)."""
+	if not supplier:
+		return []
+
+	if not frappe.has_permission("Supplier", "read", supplier):
+		frappe.throw(frappe._("Not permitted"), PermissionError)
+
+	from highcool_components.highcool_component_management.utils.resolution_service import (
+		get_grouped_unresolved_missing_components as fetch_grouped,
+	)
+
+	return fetch_grouped(supplier)

@@ -67,7 +67,7 @@ def sync_component_receipts_for_pr_item(pr_item_row, definitions: list[dict] | N
 	for definition in definitions:
 		component_item = definition["component_item"]
 		expected_qty = max(flt(definition["qty_per_unit"]) * parent_qty, 0.0)
-		received_qty = existing_received_by_component.get(component_item, expected_qty)
+		received_qty = existing_received_by_component.get(component_item, 0.0)
 		missing_qty = max(expected_qty - received_qty, 0.0)
 		rows.append(
 			{
@@ -109,7 +109,7 @@ def get_missing_components_for_purchase_receipt(doc) -> list[dict]:
 			entry = entries_by_component.get(component_item)
 			received_qty = max(flt((entry or {}).get("received_qty")), 0.0)
 			if not entry:
-				received_qty = expected_qty
+				received_qty = 0.0
 			missing_qty = max(expected_qty - received_qty, 0.0)
 			if missing_qty <= 1e-9:
 				continue

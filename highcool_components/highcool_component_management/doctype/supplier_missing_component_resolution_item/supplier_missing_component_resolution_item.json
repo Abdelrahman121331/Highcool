@@ -1,0 +1,81 @@
+{
+ "actions": [],
+ "creation": "2026-04-17 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "istable": 1,
+ "module": "Highcool Component Management",
+ "name": "Supplier Missing Component Resolution Item",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "field_order": [
+  "item_code",
+  "total_missing_qty",
+  "already_resolved_qty",
+  "pending_qty",
+  "resolve_qty",
+  "rate",
+  "amount"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "total_missing_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Total Missing Qty",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "already_resolved_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Already Resolved Qty",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "pending_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Pending Qty",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "resolve_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Resolve Qty",
+   "non_negative": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "rate",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Rate"
+  },
+  {
+   "columns": 1,
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount",
+   "read_only": 1
+  }
+ ]
+}

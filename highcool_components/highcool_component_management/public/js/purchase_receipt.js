@@ -6,10 +6,6 @@ frappe.ui.form.on("Purchase Receipt", {
 		if (frm.doc.docstatus !== 0) {
 			return;
 		}
-
-		frm.add_custom_button(__("Edit Component Receipts"), () => {
-			open_component_receipts_dialog(frm);
-		});
 	},
 });
 
@@ -19,6 +15,9 @@ frappe.ui.form.on("Purchase Receipt Item", {
 	},
 	qty(frm, cdt, cdn) {
 		seed_component_receipts_for_row(frm, locals[cdt][cdn]);
+	},
+	hc_edit_component_receipts(frm, cdt, cdn) {
+		open_component_receipts_dialog_for_row(frm, locals[cdt][cdn]);
 	},
 });
 
@@ -62,7 +61,7 @@ function seed_component_receipts_for_row(frm, row) {
 			const received_qty =
 				existing_received[definition.item_code] !== undefined
 					? existing_received[definition.item_code]
-					: expected_qty;
+					: 0;
 			return {
 				component_item: definition.item_code,
 				expected_qty,
@@ -76,8 +75,7 @@ function seed_component_receipts_for_row(frm, row) {
 	});
 }
 
-function open_component_receipts_dialog(frm) {
-	const row = get_target_pr_item_row(frm);
+function open_component_receipts_dialog_for_row(frm, row) {
 	if (!row) {
 		return;
 	}
@@ -86,7 +84,7 @@ function open_component_receipts_dialog(frm) {
 		return;
 	}
 
-	seed_component_receipts_for_row(frm, row).then(() => {
+	return seed_component_receipts_for_row(frm, row).then(() => {
 		const source_rows = get_component_receipts_from_row(row);
 		if (!source_rows.length) {
 			frappe.msgprint(__("Selected item has no component definition."));
@@ -140,6 +138,21 @@ function open_component_receipts_dialog(frm) {
 			primary_action_label: __("Apply"),
 			primary_action(values) {
 				const rows = (values && values.component_receipts) || source_rows;
+				const invalid_row = rows.find((dialog_row) => {
+					if (!dialog_row.component_item) {
+						return false;
+					}
+					return to_non_negative(dialog_row.received_qty) <= 0;
+				});
+				if (invalid_row) {
+					frappe.msgprint(
+						__("Received Qty must be greater than 0 for component {0}.", [
+							invalid_row.component_item,
+						])
+					);
+					return;
+				}
+
 				const normalized_rows = rows
 					.filter((dialog_row) => dialog_row.component_item)
 					.map((dialog_row) => {
@@ -186,29 +199,6 @@ function get_component_receipts_from_row(row) {
 				missing_qty: Math.max(expected_qty - received_qty, 0),
 			};
 		});
-}
-
-function get_target_pr_item_row(frm) {
-	const grid = frm.get_field("items") && frm.get_field("items").grid;
-	if (!grid) {
-		return null;
-	}
-
-	const selected_rows = (grid.get_selected_children && grid.get_selected_children()) || [];
-	if (selected_rows.length > 1) {
-		frappe.msgprint(__("Select only one row in Items."));
-		return null;
-	}
-	if (selected_rows.length === 1) {
-		return selected_rows[0];
-	}
-
-	if (grid.open_grid_row && grid.open_grid_row.doc) {
-		return grid.open_grid_row.doc;
-	}
-
-	frappe.msgprint(__("Select one item row, then click Edit Component Receipts."));
-	return null;
 }
 
 function to_non_negative(value) {

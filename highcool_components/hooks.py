@@ -23,6 +23,7 @@ doctype_js = {
 	"Purchase Receipt": "highcool_component_management/public/js/purchase_receipt.js",
 	"Supplier": "highcool_component_management/public/js/supplier.js",
 	"Item": "highcool_component_management/public/js/item.js",
+	"Supplier Missing Component Resolution": "highcool_component_management/public/js/supplier_missing_component_resolution.js",
 }
 
 doc_events = {

@@ -1,0 +1,44 @@
+{
+ "actions": [],
+ "creation": "2026-04-17 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "istable": 1,
+ "module": "Highcool Component Management",
+ "name": "Supplier Missing Component Resolution Allocation",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "field_order": [
+  "supplier_missing_component",
+  "item_code",
+  "allocated_qty"
+ ],
+ "fields": [
+  {
+   "fieldname": "supplier_missing_component",
+   "fieldtype": "Link",
+   "label": "Supplier Missing Component",
+   "options": "Supplier Missing Component",
+   "reqd": 1
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "allocated_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Allocated Qty",
+   "non_negative": 1,
+   "reqd": 1
+  }
+ ]
+}

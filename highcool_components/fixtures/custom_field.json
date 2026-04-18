@@ -43,6 +43,17 @@
  },
  {
   "doctype": "Custom Field",
+  "dt": "Purchase Receipt Item",
+  "fieldname": "hc_edit_component_receipts",
+  "fieldtype": "Button",
+  "in_list_view": 1,
+  "insert_after": "rejected_qty",
+  "label": "Edit Component Receipts",
+  "module": "Highcool Component Management",
+  "name": "Purchase Receipt Item-hc_edit_component_receipts"
+ },
+ {
+  "doctype": "Custom Field",
   "dt": "Supplier",
   "fieldname": "hc_missing_components_section",
   "fieldtype": "Section Break",
